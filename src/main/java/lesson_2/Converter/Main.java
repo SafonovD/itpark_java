@@ -1,4 +1,4 @@
-package Lesson_2.Converter;
+package lesson_2.Converter;
 
 import java.util.Scanner;
 
