@@ -17,7 +17,7 @@ public class QuadraticEquation {
         double a, b, c;
         double diskriminant;
         System.out.println("Введите числа a, b, c ");
-        System.out.println("Для решения ураынения : a*x^+b*x+c=0");
+        System.out.println("Для решения уравнения : a*x^+b*x+c=0");
         a = scanner.nextDouble();
         b = scanner.nextDouble();
         c = scanner.nextDouble();
