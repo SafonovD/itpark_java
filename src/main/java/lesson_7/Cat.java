@@ -12,12 +12,12 @@ public class Cat {
     }
 
     public Cat(int maxDistanceSwim, int maxDistanceRun) {
-        this.maxDistanceSwim = maxDistanceSwim;
+        this(maxDistanceSwim);
         this.maxDistanceRun = maxDistanceRun;
     }
 
     public void swim(int value) {
-        if (value > maxDistanceSwim | value < 0) {
+        if (value > maxDistanceSwim || value <= 0) {
             System.out.println("Кот не умеет плавать");
         }
     }

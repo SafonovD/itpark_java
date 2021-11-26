@@ -15,7 +15,7 @@ public class AnimalRuner {
         Tiger tiger = new Tiger(50,800);
 
 
-        cat.swim(15);
+        cat.swim(5);
         cat.run(190);
         System.out.println("-------------");
         dog.swim(10);

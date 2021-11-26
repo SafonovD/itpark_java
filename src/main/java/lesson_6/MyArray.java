@@ -45,7 +45,7 @@ public class MyArray {
         return minValue;
     }
 
-    public static int avgValue(int[] arr) {
+    public static double avgValue(int[] arr) {
         int avgValue = 0;
         for (int i = 0; i < arr.length; i++) {
             avgValue += arr[i];
