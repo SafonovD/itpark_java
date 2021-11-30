@@ -27,5 +27,6 @@ public class AnimalRuner {
         tiger.swim(15);
         tiger.run(290);
         System.out.println("-------------");
+
     }
 }
