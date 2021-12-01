@@ -1,6 +1,6 @@
 package lesson_9;
 
-public class Truck extends Automobile {
+public  final class Truck extends Automobile {
 
     public Truck() {
     }
@@ -14,7 +14,7 @@ public class Truck extends Automobile {
         if (getDistance() <= 500) {
             System.out.println("Грузовик проехал " + getDistance());
         } else {
-            System.out.println("Это расстояние чень большое для Грузовика");
+            System.out.println("Это расстояние " + getDistance()+" очень большое для Грузовика");
         }
     }
     @Override
