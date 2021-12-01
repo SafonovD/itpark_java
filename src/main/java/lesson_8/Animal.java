@@ -2,7 +2,7 @@ package lesson_8;
 
 import java.util.Objects;
 
-public class Animal  {
+public abstract class Animal  {
     String name;
     int age;
     int weight;
@@ -13,9 +13,7 @@ public class Animal  {
         this.weight = weight;
     }
 
-    public void voice(){
-        System.out.println("У животных есть голос");
-    }
+    public abstract void voice();
 
     @Override
     public String toString() {
