@@ -2,26 +2,7 @@ package lesson_10;
 
 public interface Convertable {
 
-     double RATERUB = 65.03;
-     double RATEEURO = 83.36;
-     double RATEUSD = 73.84;
-     double RATEJPY = 65.03;
-
-     double convertable(double valueCurrency, double rate);
-
-    default double getRATEUSD() {
-          return RATEUSD;
-     }
-    default double getRATEEURO() {
-        return RATEEURO;
-    }
-    default double getRATERUB() {
-        return RATERUB;
-    }
-    default double getRATEJPY() {
-        return RATEJPY;
-    }
-
-
-
+    double convertMToKm(double value);
+    double convertSmToDm(double value);
+    double convertMmToSm(double value);
 }
