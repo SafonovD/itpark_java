@@ -15,12 +15,13 @@ public class Main {
         System.out.println("Конвертер валют");
         System.out.println("1-USD,2-RUB,3-EUR,4-JPY");
         System.out.println("Введите число: Какую валюту хотите обменять");
-        int currency;
+
         while (!scanner.hasNextInt()) {
             String str = scanner.next();
             System.out.println("вы ввели " + str + " введите число");
         }
         int currencyIn = scanner.nextInt();
+
         System.out.println("Меняем " + EnCurrency.index(currencyIn));
 
         System.out.println("Введите число: Какую валюту хотите получить");
@@ -35,7 +36,6 @@ public class Main {
         int valueCurrency;
         double result;
 
-
         Convertable usd = new UsdConversion();
         Convertable rub = new RubConversion();
         Convertable eur = new EuroConversion();
@@ -43,78 +43,104 @@ public class Main {
 
         switch (EnCurrency.index(currencyIn)) {
             case USD: {
-                if (EnCurrency.index(currencyOut).equals("RUB")) {
+                if (EnCurrency.index(currencyOut).equals(EnCurrency.RUB)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    usd.convertable(valueCurrency, usd.getRATERUB());
-                    result = usd.convertable(valueCurrency, usd.getRATERUB());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.RUB+ " = " + result );
-                } else if (EnCurrency.index(currencyOut).equals("EUR")) {
+                    result = usd.convertableToRub(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.EUR)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
                     result = usd.convertable(valueCurrency, usd.getRATEEURO());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.EUR+ " = " + result);
-                } else {
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.JPY)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    usd.convertable(valueCurrency, usd.getRATEJPY());
                     result = usd.convertable(valueCurrency, usd.getRATEJPY());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.JPY+ " = " + result);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else {
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + EnCurrency.index(currencyIn));
                 }
+                break;
             }
             case RUB: {
-                if (currencyOut == 1) {
+                if (EnCurrency.index(currencyOut).equals(EnCurrency.USD)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    result = rub.convertable(valueCurrency, rub.getRATEUSD());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.USD+ " = " + result);
-                } else if (currencyOut == 3) {
+                    result = usd.convertableToRubToCurr(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.USD + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.EUR)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    result = rub.convertable(valueCurrency, rub.getRATEEURO());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.EUR+ " = " + result);
+                    result = eur.convertableToRubToCurr(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.EUR + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.JPY)) {
+                    System.out.println("Какое количество меняем");
+                    valueCurrency = scanner.nextInt();
+                    result = jpy.convertableToRubToCurr(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.JPY + " = " + result);
                 } else {
-                    System.out.println("Какое количество меняем");
-                    valueCurrency = scanner.nextInt();
-                    result = rub.convertable(valueCurrency, rub.getRATEJPY());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn)+ " на "+ EnCurrency.JPY+ " = " + result);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + EnCurrency.index(currencyIn));
                 }
+                break;
             }
             case EUR: {
-                if (currencyOut == 1) {
+                if (EnCurrency.index(currencyOut).equals(EnCurrency.USD)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
                     result = eur.convertable(valueCurrency, eur.getRATEUSD());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.USD+ " = " + result);
-                } else if (currencyOut == 2) {
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.USD + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.RUB)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    result = eur.convertable(valueCurrency, eur.getRATERUB());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.RUB+ " = " + result);
+                    result = eur.convertableToRub(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.JPY)) {
+                    System.out.println("Какое количество меняем");
+                    valueCurrency = scanner.nextInt();
+                    result = eur.convertable(valueCurrency, rub.getRATEJPY());
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
                 } else {
-                    System.out.println("Какое количество меняем");
-                    valueCurrency = scanner.nextInt();
-                    result = rub.convertable(valueCurrency, rub.getRATEJPY());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.JPY+ " = " + result);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + EnCurrency.index(currencyIn));
                 }
+                break;
             }
             case JPY: {
-                if (currencyOut == 1) {
+                if (EnCurrency.index(currencyOut).equals(EnCurrency.USD)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
                     result = jpy.convertable(valueCurrency, jpy.getRATEUSD());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.USD+ " = " + result);
-                } else if (currencyOut == 2) {
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.RUB)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
-                    result = jpy.convertable(valueCurrency, jpy.getRATERUB());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.RUB+ " = " + result);
-                } else {
+                    result = jpy.convertableToRub(valueCurrency);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else if (EnCurrency.index(currencyOut).equals(EnCurrency.EUR)) {
                     System.out.println("Какое количество меняем");
                     valueCurrency = scanner.nextInt();
                     result = jpy.convertable(valueCurrency, jpy.getRATEEURO());
-                    System.out.println("результат Обмена "+ EnCurrency.index(currencyIn) + " на "+ EnCurrency.EUR+ " = " + result);
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + result);
+                } else {
+                    System.out.println("результат Обмена " + EnCurrency.index(currencyIn) + " на "
+                            + EnCurrency.index(currencyOut) + " = " + EnCurrency.index(currencyIn));
                 }
+                break;
             }
 
         }
