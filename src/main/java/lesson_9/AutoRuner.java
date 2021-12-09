@@ -19,27 +19,22 @@ public class AutoRuner {
     public static void main(String[] args) {
         Random random = new Random();
 
-        int count=0;
+        int count = 0;
         Automobile[] automobiles = new Automobile[10];
 
-       while (count < automobiles.length){
-           for (int i = 0; i < automobiles.length; i++) {
-               if(i %2 != 0){
-                   automobiles[i] = new Car(random.nextInt(1000));
-               }else{
-                   automobiles[i] = new Truck(random.nextInt(1000));
-               }
-           count++;
-       }
-           for (Automobile avto: automobiles) {
-               avto.move();
-           }
+        while (count < automobiles.length) {
+            for (int i = 0; i < automobiles.length; i++) {
+                if (i % 2 != 0) {
+                    automobiles[i] = new Car(random.nextInt(1000));
+                } else {
+                    automobiles[i] = new Truck(random.nextInt(1000));
+                }
+                count++;
+            }
+            for (Automobile avto : automobiles) {
+                avto.move();
+            }
 
-}
-
-
-
-
-
+        }
     }
 }
