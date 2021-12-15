@@ -32,11 +32,11 @@ public class Main {
         while (count < automobil.length){
             for (int i = 0; i < automobil.length; i++){
                 if( i %2 != 0){
-                    automobil[i] = new Car(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextDouble(),
-                            random.nextDouble(), random.nextInt(10));
+                    automobil[i] = new Car(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
+                            (random.nextDouble()*4), random.nextInt(10));
                 }else {
-                    automobil[i]  = new Truck(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextDouble(),
-                            random.nextDouble(), random.nextInt(10));
+                    automobil[i]  = new Truck(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
+                            (random.nextDouble()*4), random.nextInt(10));
                 }
                 count++;
             }

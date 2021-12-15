@@ -6,7 +6,7 @@ public class Car extends Automobil{
         super();
     }
 
-    public Car(int speed, int carNumber, int weight, double height, double width, int length) {
+    public Car(int speed, int carNumber, int weight, int height, double width, int length) {
         super(speed, carNumber, weight, height, width, length);
     }
 
@@ -36,12 +36,23 @@ public class Car extends Automobil{
     @Override
     public void kpp() {
         if(getWeight() > 8){
-            if(getHeight() >4 && getHeight()>2.5){
-
+            if(getHeight() >= 4 & getWidth() >= 2.5){
+                try{
+                    System.out.println("Габариты не позволяют вам пройти КПП. Ваша высота "+ getHeight()+" и нирина "
+                    + getWidth()+ " Номер Автомобилья "+ getCarNumber());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    System.out.println("Вес Автомобиль не позволяем вам пройти КПП. Ваш вес "+  getWeight()+" Номер Автомобилья "+ getCarNumber());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
-
+        }else{
+            System.out.println("Автомобиль КПП прошел успешно");
         }
-
     }
 
     @Override
@@ -49,8 +60,3 @@ public class Car extends Automobil{
         return "Легковая{}";
     }
 }
-/*
-1. Вес автомобиля не должен превышать 8 тон (в противном случае генерируется исключение о невозможности проезда и указании номера авто и его типа)
-
- 2. Габариты авто не должны превышать 4 м высоты и 2.5 м ширины (иначе генерируется исключение, указанное в п.1)
- */

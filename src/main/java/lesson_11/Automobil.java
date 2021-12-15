@@ -5,13 +5,13 @@ public abstract class Automobil {
     private int speed;
     private int carNumber;
     private int weight;
-    private double height ;
+    private int height ;
     private double width;
     private int length;
 
     public Automobil(){}
 
-    public Automobil(int speed, int carNumber, int weight, double height, double width, int length) {
+    public Automobil(int speed, int carNumber, int weight, int height, double width, int length) {
         this.speed = speed;
         this.carNumber = carNumber;
         this.weight = weight;

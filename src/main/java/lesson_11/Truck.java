@@ -6,7 +6,7 @@ public class Truck extends Automobil{
         super();
     }
 
-    public Truck(int speed, int carNumber, int weight, double height, double width, int length) {
+    public Truck(int speed, int carNumber, int weight, int height, double width, int length) {
         super(speed, carNumber, weight, height, width, length);
     }
 
@@ -33,7 +33,24 @@ public class Truck extends Automobil{
 
     @Override
     public void kpp() {
-
+        if(getWeight() > 8){
+            if(getHeight() > 4 && getWidth() > 2.5){
+                try{
+                    System.out.println("Габариты не позволяют вам пройти КПП. Ваша высота "+ getHeight()+" и нирина "
+                            + getWidth()+ " Номер Грузовика "+ getCarNumber());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }else{
+                try{
+                    System.out.println("Вес Грузовика не позволяем вам пройти КПП. Ваш вес "+  getWeight()+" Номер Грузовика "+ getCarNumber());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }else{
+            System.out.println("Грузовик КПП прошел успешно");
+        }
     }
 
     @Override
