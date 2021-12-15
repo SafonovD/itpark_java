@@ -27,16 +27,16 @@ public class Main {
 
         Automobil[] automobil = new Automobil[20];
         int count = 0;
-        Random random =new Random();
+        Random random = new Random();
 
-        while (count < automobil.length){
-            for (int i = 0; i < automobil.length; i++){
-                if( i %2 != 0){
-                    automobil[i] = new Car(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
-                            (random.nextDouble()*4), random.nextInt(10));
-                }else {
-                    automobil[i]  = new Truck(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
-                            (random.nextDouble()*4), random.nextInt(10));
+        while (count < automobil.length) {
+            for (int i = 0; i < automobil.length; i++) {
+                if (i % 2 != 0) {
+                    automobil[i] = new Car(random.nextInt(200), random.nextInt(10000), random.nextInt(10), random.nextInt(6),
+                            (random.nextDouble() * 4), random.nextInt(10));
+                } else {
+                    automobil[i] = new Truck(random.nextInt(200), random.nextInt(10000), random.nextInt(10), random.nextInt(6),
+                            (random.nextDouble() * 4), random.nextInt(10));
                 }
                 count++;
             }
@@ -44,11 +44,11 @@ public class Main {
         for (Automobil avto : automobil) {
             avto.move();
         }
+        System.out.println();
         System.out.println("----- проезд через КПП -------");
+        
         for (Automobil avto : automobil) {
             avto.kpp();
         }
-
-
     }
 }
