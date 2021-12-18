@@ -1,6 +1,6 @@
 package lesson_11;
 
-public abstract class Automobil {
+public abstract class Automobiles {
 
     private int speed;
     private int carNumber;
@@ -9,9 +9,9 @@ public abstract class Automobil {
     private double width;
     private int length;
 
-    public Automobil(){}
+    public Automobiles(){}
 
-    public Automobil(int speed, int carNumber, int weight, int height, double width, int length) {
+    public Automobiles(int speed, int carNumber, int weight, int height, double width, int length) {
         this.speed = speed;
         this.carNumber = carNumber;
         this.weight = weight;

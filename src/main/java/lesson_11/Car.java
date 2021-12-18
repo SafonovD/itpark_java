@@ -1,6 +1,6 @@
 package lesson_11;
 
-public class Car extends Automobil{
+public class Car extends Automobiles {
 
     public Car() {
         super();

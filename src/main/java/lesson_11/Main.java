@@ -1,7 +1,5 @@
 package lesson_11;
 
-import lesson_9.Automobile;
-
 import java.util.Random;
 
 /* Необходимо симулировать дорожную ситуацию с возможностью проезда через КПП. Приложение поддерживает работу с
@@ -25,30 +23,29 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        Automobil[] automobil = new Automobil[20];
+        Automobiles[] automobile = new Automobiles[20];
         int count = 0;
         Random random =new Random();
 
-        while (count < automobil.length){
-            for (int i = 0; i < automobil.length; i++){
+        while (count < automobile.length){
+            for (int i = 0; i < automobile.length; i++){
                 if( i %2 != 0){
-                    automobil[i] = new Car(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
+                    automobile[i] = new Car(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
                             (random.nextDouble()*4), random.nextInt(10));
                 }else {
-                    automobil[i]  = new Truck(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
+                    automobile[i]  = new Truck(random.nextInt(200),random.nextInt( 10000),random.nextInt(10),random.nextInt(6),
                             (random.nextDouble()*4), random.nextInt(10));
                 }
                 count++;
             }
         }
-        for (Automobil avto : automobil) {
+        for (Automobiles avto : automobile) {
             avto.move();
         }
+        System.out.println();
         System.out.println("----- проезд через КПП -------");
-        for (Automobil avto : automobil) {
+        for (Automobiles avto : automobile) {
             avto.kpp();
         }
-
-
     }
 }
