@@ -14,15 +14,13 @@ package lesson_12;
  */
 public class Main {
     public static void main(String[] args) {
-        MyArray myArray = new MyArray();
-        String[][] str = {{"1", "2", "3", "4"},
-                {"5", "6", "7", "8"},
-                {"9", "10", "11", "12"},
-                {"13", "14", "15", "16"}};
-        try {
-            System.out.println(myArray.SummElement(str));
-        } catch (MyArrayDataException | MyArraySizeException e) {
-            e.printStackTrace();
-        }
+        MyArray myArray = new MyArray(4,4);
+
+        System.out.println(myArray.SummElement());
+        System.out.println();
+
+        myArray.print();
+
+
     }
 }
