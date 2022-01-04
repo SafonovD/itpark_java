@@ -25,9 +25,12 @@ public class Main {
         System.out.println("Введите число работников");
         int value = scanner.nextInt();
         employeeUtils.fillUpEmploees(value);
-        System.out.println("Введите стаж работы ");
-        value = scanner.nextInt();
-        employeeUtils.print(value);
+
+//        System.out.println("Введите стаж работы ");
+//        value = scanner.nextInt();
+//        employeeUtils.printWorkAge(value);
+
+        employeeUtils.remove();
 
     }
 }
