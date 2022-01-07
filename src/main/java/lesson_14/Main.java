@@ -1,4 +1,12 @@
 package lesson_14;
+
+import lesson_14.cont.Contact;
+import lesson_14.cont.ContactWithOther;
+
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.IntStream;
+
 /*
 Реализовать сущность «Телефонный справочник», в котором разместить такие важные атрибуты как информацию об абоненте -
 ФИО, номере телефона, списке связанных контактов. По желанию, можно разместить принадлежность к оператору сотовой связи
@@ -15,4 +23,73 @@ package lesson_14;
 • В итоге, определить насколько целесообразно хранить такие объемы данных в коллекциях или лучше воспользоваться привычными массивами
  */
 public class Main {
+    private static final Integer LIMIT = 10_000;
+    private static final Integer LIMIT_OF_LINKED_KONT = 100;
+
+    public static void main(String[] args) {
+
+        //     System.out.println(Arrays.toString(contact));
+
+  //      ContactWithOther[] contactsArray = genrateElementArrayAdnMeasureTame(Main::fillContactArrays);
+        Collection<ContactWithOther> contactList = genrateElementAndsMeasureTame(Main::fillContactList);
+  //      Collection<ContactWithOther> contactSet = genrateElementAndsMeasureTame(Main::fillContactSet);
+
+        for (ContactWithOther contact: contactList){
+            IntStream.range(0,LIMIT_OF_LINKED_KONT).boxed().map(i -> randomElement(contactList)).forEach(contact.getLinkedContact()::add);
+        }
+
+    }
+
+    public static ContactWithOther[] genrateElementArrayAdnMeasureTame(Supplier<ContactWithOther[]> supplier) {
+        long now = System.currentTimeMillis();
+        ContactWithOther[] collection = supplier.get();
+        long spentTime = System.currentTimeMillis() - now;
+        System.out.printf("Мы заполнили Массив размером %d элементов за %.2f секунд\n", collection.length, spentTime / 1000d);
+        return collection;
+    }
+
+    public static Collection<ContactWithOther> genrateElementAndsMeasureTame(Supplier<Collection<ContactWithOther>> supplier) {
+        long now = System.currentTimeMillis();
+        Collection<ContactWithOther> collection = supplier.get();
+        long spentTime = System.currentTimeMillis() - now;
+        System.out.printf("Мы заполнили %s размером %d элементов за %.2f секунд\n",
+                collection instanceof List ? "Cписк" : "Множество",
+                collection.size(), spentTime / 1000d);
+        return collection;
+    }
+
+    private static ContactWithOther[] fillContactArrays() {
+        ContactWithOther[] contact = new ContactWithOther[LIMIT];
+        for (int i = 0; i < contact.length; i++) {
+            contact[i] = new ContactWithOther();
+        }
+        return contact;
+    }
+
+    private static List<ContactWithOther> fillContactList() {
+        List<ContactWithOther> contact = new ArrayList<>(LIMIT);
+        IntStream.range(0, LIMIT).forEach(value -> {
+            contact.add(new ContactWithOther());
+        });
+        return contact;
+    }
+
+    private static Set<ContactWithOther> fillContactSet() {
+        Set<ContactWithOther> contact = new HashSet<>(LIMIT);
+        IntStream.range(0, LIMIT).forEach(value -> {
+            contact.add(new ContactWithOther());
+        });
+        return contact;
+    }
+
+    public static ContactWithOther randomElement(Collection<ContactWithOther> collection){
+       int counter = 0;
+       int randomCounter = new Random().nextInt(collection.size());
+       for (ContactWithOther contact : collection){
+           if(counter++ == randomCounter){
+               return contact;
+           }
+       }
+       throw new IllegalArgumentException("Тут ошибка");
+    }
 }
