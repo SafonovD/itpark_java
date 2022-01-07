@@ -8,7 +8,7 @@ public class EmployeeUtils {
             "Людмила", "Юлия", "Снежана", "Николай", "Риналь", "Тимур");
     int count = 0;
 
-    private List<Employee> employees = new LinkedList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     public void fillUpEmploees(int n) {
 
@@ -19,7 +19,7 @@ public class EmployeeUtils {
         }
     }
 
-//    public void print(int WorkAge){
+    //    public void print(int WorkAge){
 //        for (Employee list : this.employees) {
 //            if(list.getWorkAge() == WorkAge) {
 //                System.out.println(list);
@@ -40,13 +40,15 @@ public class EmployeeUtils {
 
     public void remove() {
         ListIterator<Employee> ltr = this.employees.listIterator();
+        while (ltr.hasNext()) {
+            ltr.next();
+        }
         while (ltr.hasPrevious()) {
-            int index = ltr.previousIndex();
             Employee emp = ltr.previous();
-//            if ( index%2 != 0) {
-                System.out.println("удален " + emp + " + " + index);
-//               ltr.remove();
-//           }
+            if ( ltr.previousIndex()%2 != 0 && ltr.previousIndex() !=-1) {
+            System.out.println("удален " + emp +" + " + ltr.previousIndex());
+               ltr.remove();
+          }
         }
     }
 }

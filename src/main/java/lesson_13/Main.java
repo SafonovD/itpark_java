@@ -26,11 +26,12 @@ public class Main {
         int value = scanner.nextInt();
         employeeUtils.fillUpEmploees(value);
 
-//        System.out.println("Введите стаж работы ");
-//        value = scanner.nextInt();
-//        employeeUtils.printWorkAge(value);
+       System.out.println("Введите стаж работы ");
+       value = scanner.nextInt();
+        employeeUtils.printWorkAge(value);
+        System.out.println();
+        System.out.println(" ----- Удаление элементов коллекции ----- ");
 
-        employeeUtils.remove();
-
+         employeeUtils.remove();
     }
 }
