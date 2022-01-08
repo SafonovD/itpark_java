@@ -14,4 +14,5 @@ public class ContactWithOther extends Contact {
         this.linkedContact = new HashSet<>();
     }
 
+
 }

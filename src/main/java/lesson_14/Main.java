@@ -4,7 +4,9 @@ import lesson_14.cont.Contact;
 import lesson_14.cont.ContactWithOther;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /*
@@ -23,21 +25,52 @@ import java.util.stream.IntStream;
 • В итоге, определить насколько целесообразно хранить такие объемы данных в коллекциях или лучше воспользоваться привычными массивами
  */
 public class Main {
-    private static final Integer LIMIT = 10_000;
+    private static final Integer LIMIT = 1000;
     private static final Integer LIMIT_OF_LINKED_KONT = 100;
 
     public static void main(String[] args) {
 
         //     System.out.println(Arrays.toString(contact));
 
-  //      ContactWithOther[] contactsArray = genrateElementArrayAdnMeasureTame(Main::fillContactArrays);
-        Collection<ContactWithOther> contactList = genrateElementAndsMeasureTame(Main::fillContactList);
-  //      Collection<ContactWithOther> contactSet = genrateElementAndsMeasureTame(Main::fillContactSet);
+      ContactWithOther[] contactsArray = genrateElementArrayAdnMeasureTame(Main::fillContactArrays);
+      Collection<ContactWithOther> contactList = genrateElementAndsMeasureTame(Main::fillContactList);
+      Collection<ContactWithOther> contactSet = genrateElementAndsMeasureTame(Main::fillContactSet);
 
+        System.out.println("--------------");
+        fillLinketContacts(contactList);
+        System.out.println("--------------");
+        fillLinketContacts(contactSet);
+
+        System.out.println("--------------");
+        Map<Contact, Collection<Contact>> mapOfContactLinkedContact = contactList.stream()
+                .collect(Collectors.toMap(Contact::new, ContactWithOther::getLinkedContact));
+
+        System.out.println(mapOfContactLinkedContact);
+
+        Map<Contact, Integer> mapOfContact = contactList.stream().map(ContactWithOther::getLinkedContact)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toMap(Function.identity(), contact -> 1, Integer::sum));
+
+        System.out.println("--------------");
+        System.out.println(contactList);
+        System.out.println("--------------");
+
+        Optional<Map.Entry<Contact, Integer>> maxPopularContact = mapOfContact.entrySet().
+                stream().max(Map.Entry.comparingByValue());
+
+        maxPopularContact.ifPresent(System.out::println);
+    }
+
+    private static void fillLinketContacts(Collection<ContactWithOther> contactList) {
+        long now = System.currentTimeMillis();
         for (ContactWithOther contact: contactList){
-            IntStream.range(0,LIMIT_OF_LINKED_KONT).boxed().map(i -> randomElement(contactList)).forEach(contact.getLinkedContact()::add);
+            IntStream.range(0,LIMIT_OF_LINKED_KONT).boxed().map(i -> randomElement(contactList)).
+                    forEach(contact.getLinkedContact()::add);
         }
-
+        long spentTime = System.currentTimeMillis() - now;
+        System.out.printf("Мы заполнили связанные контакты %s размером %d элементов за %.2f секунд\n",
+                contactList instanceof List ? "Cписка" : "Множества",
+                LIMIT_OF_LINKED_KONT, spentTime / 1000d);
     }
 
     public static ContactWithOther[] genrateElementArrayAdnMeasureTame(Supplier<ContactWithOther[]> supplier) {

@@ -27,7 +27,9 @@ public class Contact {
         this.surname = surname;
         this.patronymic = patronymic;
         this.phone = phone;
-
+    }
+    public Contact (ContactWithOther contact){
+        this(contact.getName(), contact.getSurname(), contact.getPatronymic(), contact.getPhone());
     }
 
     @Override

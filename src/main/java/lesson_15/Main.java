@@ -1,4 +1,8 @@
 package lesson_15;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 /*
 Опциональное практическое задание: Реализовать приложение, которое принимает на вход некоторый текст
 (например, из консоли), вычисляет частоту появления слов в этом тексте и после чего выводит слова в убывающем
@@ -28,4 +32,15 @@ imperdiet sapien laoreet faucibus. Nunc eget vehicula mauris, ac auctor lorem. L
 adipiscing elit. Integer vel odio nec mi tempor dignissim.
  */
 public class Main {
+    public static void main(String[] args) {
+
+       String str = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales consectetur purus at faucibus. Donec mi quam,\n" +
+                   "tempor vel ipsum non, faucibus suscipit massa. Morbi lacinia velit blandit tincidunt efficitur. Vestibulum eget metus\n" +
+                   "imperdiet sapien laoreet faucibus. Nunc eget vehicula mauris, ac auctor lorem. Lorem ipsum dolor sit amet, consectetur\n" +
+                   "adipiscing elit. Integer vel odio nec mi tempor dignissim.";
+
+       String[] words = str.split(" ");
+       Arrays.stream(words).sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
+
+    }
 }

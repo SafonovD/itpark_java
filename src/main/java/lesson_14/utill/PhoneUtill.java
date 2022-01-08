@@ -1,6 +1,6 @@
 package lesson_14.utill;
 
-import lesson_14.MobileOperator;
+import lesson_14.mobOper.MobileOperator;
 
 import java.util.Random;
 import java.util.stream.Collectors;
