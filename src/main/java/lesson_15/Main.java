@@ -1,7 +1,9 @@
 package lesson_15;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 /*
 Опциональное практическое задание: Реализовать приложение, которое принимает на вход некоторый текст
@@ -40,7 +42,10 @@ public class Main {
                    "adipiscing elit. Integer vel odio nec mi tempor dignissim.";
 
        String[] words = str.split(" ");
-       Arrays.stream(words).sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
+        List<String> wordList = (Arrays.asList(words));
+  //     Arrays.stream(words).sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
+
+        wordList.stream().sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
 
     }
 }
