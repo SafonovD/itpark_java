@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /*
 Опциональное практическое задание: Реализовать приложение, которое принимает на вход некоторый текст
@@ -46,6 +48,7 @@ public class Main {
   //     Arrays.stream(words).sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
 
         wordList.stream().sorted(Comparator.comparingInt(String::length)).distinct().forEach(System.out::println);
+
 
     }
 }
