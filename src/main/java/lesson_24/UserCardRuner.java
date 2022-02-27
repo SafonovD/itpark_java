@@ -17,6 +17,8 @@ public class UserCardRuner {
         String departsPaht = "src/main/resources/deperts.csv";
 
         try {
+//          System.out.println("Удаление таблиц");
+//          cardUserFill.dropUserCardAndDepartIfExists();
             System.out.println("Создаем таблицы на основе csv и заполняем их ");
             List<Depart> departList = ParseUtil.parseDepartCsv(departsPaht);
             cardUserFill.addDeparts(departList);
@@ -25,7 +27,6 @@ public class UserCardRuner {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        //удаление таблиц
-//        cardUserFill.dropUserCardAndDepartIfExists();
+
     }
 }
