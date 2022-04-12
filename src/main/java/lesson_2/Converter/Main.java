@@ -16,23 +16,23 @@ public class Main {
 
 
         switch (value) {
-            case (1) -> {
-                System.out.println("Введите длину");
-                value = scanner.nextInt();
-                converter.convertMToKm(value);
-                distance.print();
-            }
-            case (2) -> {
-                System.out.println("Введите длину");
-                value = scanner.nextInt();
-                converter.convertSmToDm(value);
-            }
-            case (3) -> {
-                System.out.println("Введите длину");
-                value = scanner.nextInt();
-                converter.convertMmToSm(value);
-                distance.print();
-            }
+//            case (1) -> {
+//                System.out.println("Введите длину");
+//                value = scanner.nextInt();
+//                converter.convertMToKm(value);
+//                distance.print();
+//            }
+//            case (2) -> {
+//                System.out.println("Введите длину");
+//                value = scanner.nextInt();
+//                converter.convertSmToDm(value);
+//            }
+//            case (3) -> {
+//                System.out.println("Введите длину");
+//                value = scanner.nextInt();
+//                converter.convertMmToSm(value);
+//                distance.print();
+//            }
         }
     }
 }
