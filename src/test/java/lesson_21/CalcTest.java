@@ -8,6 +8,7 @@ public class CalcTest {
 
     @Test
     public void shouldCalculatorCanCalculateSummа(){
+
         Calc calc = new Calc(10,20);
         Assert.assertEquals(30,calc.summa());
 
